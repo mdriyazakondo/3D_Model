@@ -7,6 +7,7 @@ import Login from "../auth/Login";
 import ModelDetails from "../components/ModelDetails";
 import UpdateModels from "../pages/UpdateModels/UpdateModels";
 import PrivateRoute from "./PraviteRoute";
+import Register from "../auth/Register";
 
 export const router = createBrowserRouter([
   {
@@ -16,7 +17,7 @@ export const router = createBrowserRouter([
       {
         index: true,
         element: <Home />,
-        loader: () => fetch("http://localhost:3000/models"),
+        loader: () => fetch("http://localhost:3000/latest-models"),
       },
       {
         path: "/all-models",
@@ -52,6 +53,10 @@ export const router = createBrowserRouter([
       {
         path: "auth/login",
         element: <Login />,
+      },
+      {
+        path: "auth/register",
+        element: <Register />,
       },
     ],
   },

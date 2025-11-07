@@ -1,8 +1,8 @@
 import React, { use } from "react";
 import { Link, useNavigate } from "react-router";
-import { AuthContext } from "../../context/AuthContext";
 import { FaGoogle } from "react-icons/fa6";
 import toast from "react-hot-toast";
+import { AuthContext } from "../context/ContextProvider";
 
 const Register = () => {
   const { createUserSignUp, updateUserProfile, userSignInGooogle } =
