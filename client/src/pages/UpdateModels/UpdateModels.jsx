@@ -1,10 +1,13 @@
 import React from "react";
-import { useLoaderData, useNavigate } from "react-router";
+import { useLoaderData, useLocation, useNavigate } from "react-router";
 import Swal from "sweetalert2";
 
 const UpdateModels = () => {
   const models = useLoaderData();
   const model = models.data;
+  // const location = useLocation();
+
+  // const model = location?.state?.model;
   const navigate = useNavigate();
 
   const handleSubmit = (e) => {
@@ -52,7 +55,7 @@ const UpdateModels = () => {
             <label className="label font-medium">Name</label>
             <input
               type="text"
-              defaultValue={model.name}
+              defaultValue={model?.name}
               name="name"
               required
               className="input w-full rounded-full focus:border-0 focus:outline-gray-200"
@@ -64,7 +67,7 @@ const UpdateModels = () => {
           <div>
             <label className="label font-medium">Category</label>
             <select
-              defaultValue={model.category}
+              defaultValue={model?.category}
               name="category"
               required
               className="select w-full rounded-full focus:border-0 focus:outline-gray-200"
@@ -87,7 +90,7 @@ const UpdateModels = () => {
           <div>
             <label className="label font-medium">Description</label>
             <textarea
-              defaultValue={model.description}
+              defaultValue={model?.description}
               name="description"
               required
               rows="3"
@@ -102,7 +105,7 @@ const UpdateModels = () => {
             <input
               type="url"
               name="thumbnail"
-              defaultValue={model.thumbnail}
+              defaultValue={model?.thumbnail}
               required
               className="input w-full rounded-full focus:border-0 focus:outline-gray-200"
               placeholder="https://example.com/image.jpg"

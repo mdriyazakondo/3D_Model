@@ -8,6 +8,8 @@ import ModelDetails from "../components/ModelDetails";
 import UpdateModels from "../pages/UpdateModels/UpdateModels";
 import PrivateRoute from "./PraviteRoute";
 import Register from "../auth/Register";
+import MyModels from "../pages/MyModels/MyModels";
+import MyDownloads from "../pages/MyDownloads/MyDownloads";
 
 export const router = createBrowserRouter([
   {
@@ -49,6 +51,22 @@ export const router = createBrowserRouter([
         ),
         loader: ({ params }) =>
           fetch(`http://localhost:3000/models/${params.id}`),
+      },
+      {
+        path: "/my-models",
+        element: (
+          <PrivateRoute>
+            <MyModels />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/my-downloads",
+        element: (
+          <PrivateRoute>
+            <MyDownloads />
+          </PrivateRoute>
+        ),
       },
       {
         path: "auth/login",

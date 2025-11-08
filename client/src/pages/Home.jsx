@@ -9,9 +9,9 @@ const Home = () => {
     <div className="max-w-[1500px] mx-auto">
       <Banner />
 
-      <div className="text-center text-xl font-bold mt-10">Latest Model</div>
+      <p className="text-center text-2xl font-bold  mb-12">Latest Model</p>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 mt-16">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 ">
         {data.map((model) => (
           <ModelCard key={model._id} model={model} />
         ))}
