@@ -17,7 +17,7 @@ const UpdateModels = () => {
     const description = e.target.description.value;
     const thumbnail = e.target.thumbnail.value;
     const updateNewData = { name, category, description, thumbnail };
-    fetch(`http://localhost:3000/models/${model._id}`, {
+    fetch(`https://3d-model-server-eight.vercel.app/models/${model._id}`, {
       method: "PUT",
       headers: {
         "content-type": "application/json",

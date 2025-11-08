@@ -17,7 +17,7 @@ const ModelDetails = () => {
   const { user } = use(AuthContext);
 
   useEffect(() => {
-    fetch(`http://localhost:3000/models/${id}`, {
+    fetch(`https://3d-model-server-eight.vercel.app/models/${id}`, {
       headers: {
         authorization: `Bearer ${user.accessToken}`,
       },
@@ -51,7 +51,7 @@ const ModelDetails = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:3000/models/${id}`, {
+        fetch(`https://3d-model-server-eight.vercel.app/models/${id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())
@@ -74,7 +74,7 @@ const ModelDetails = () => {
       created_at: new Date(),
       downloaded_by: user.email,
     };
-    fetch(`http://localhost:3000/downloads/${model._id}`, {
+    fetch(`https://3d-model-server-eight.vercel.app/downloads/${model._id}`, {
       method: "POST",
       headers: {
         "content-type": "application/json",

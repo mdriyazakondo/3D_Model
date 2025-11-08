@@ -51,7 +51,7 @@ const client = new MongoClient(uri, {
 
 async function run() {
   try {
-    await client.connect();
+    // await client.connect();
     const modelsCollection = client.db("model-db").collection("models");
     const downloadsCollention = client.db("model-db").collection("download");
 
@@ -162,18 +162,20 @@ async function run() {
       const email = req.query.email;
       const downloaded_by = req.query.downloaded_by;
 
-      // const exiting = await downloadsCollention.findOne(downloaded_by);
-      // if (exiting) {
-      //   return res.send();
-      // }
-
       const result = await downloadsCollention
         .find({ downloaded_by: email })
         .toArray();
       res.send(result);
     });
+    app.get("/search", async (req, res) => {
+      const search_text = req.query.search;
+      const result = await modelsCollection
+        .find({ name: { $regex: search_text, $options: "i" } })
+        .toArray();
+      res.send(result);
+    });
 
-    await client.db("admin").command({ ping: 1 });
+    // await client.db("admin").command({ ping: 1 });
     console.log(
       "Pinged your deployment. You successfully connected to MongoDB!"
     );

@@ -10,21 +10,24 @@ import PrivateRoute from "./PraviteRoute";
 import Register from "../auth/Register";
 import MyModels from "../pages/MyModels/MyModels";
 import MyDownloads from "../pages/MyDownloads/MyDownloads";
+import Loading from "../pages/Loading/Loading";
 
 export const router = createBrowserRouter([
   {
     path: "/",
     element: <MainLayout />,
+    hydrateFallbackElement: <Loading />,
     children: [
       {
         index: true,
         element: <Home />,
-        loader: () => fetch("http://localhost:3000/latest-models"),
+        loader: () =>
+          fetch("https://3d-model-server-eight.vercel.app/latest-models"),
       },
       {
         path: "/all-models",
         element: <AllModels />,
-        loader: () => fetch("http://localhost:3000/models"),
+        loader: () => fetch("https://3d-model-server-eight.vercel.app/models"),
       },
       {
         path: "add-model",
@@ -50,7 +53,7 @@ export const router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:3000/models/${params.id}`),
+          fetch(`https://3d-model-server-eight.vercel.app/models/${params.id}`),
       },
       {
         path: "/my-models",

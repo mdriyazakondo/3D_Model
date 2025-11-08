@@ -11,11 +11,14 @@ const MyModels = () => {
   const [loading, setLoading] = useState(true);
   const { user } = use(AuthContext);
   useEffect(() => {
-    fetch(`http://localhost:3000/my-models?email=${user.email}`, {
-      headers: {
-        authorization: `Bearer ${user.accessToken}`,
-      },
-    })
+    fetch(
+      `https://3d-model-server-eight.vercel.app/my-models?email=${user.email}`,
+      {
+        headers: {
+          authorization: `Bearer ${user.accessToken}`,
+        },
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         setModles(data), setLoading(false);
