@@ -1,6 +1,8 @@
 import { useLoaderData } from "react-router";
 import { ModelCard } from "../components/ModelCard";
 import Banner from "../components/Banner";
+import FAQSection from "../components/FAQSection";
+import Tastimonial from "../components/Tastimonial";
 
 const Home = () => {
   const data = useLoaderData();
@@ -16,6 +18,8 @@ const Home = () => {
           <ModelCard key={model._id} model={model} />
         ))}
       </div>
+      <Tastimonial />
+      <FAQSection />
     </div>
   );
 };

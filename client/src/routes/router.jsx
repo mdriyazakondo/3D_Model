@@ -52,8 +52,8 @@ export const router = createBrowserRouter([
             <UpdateModels />
           </PrivateRoute>
         ),
-        loader: ({ params }) =>
-          fetch(`https://3d-model-server-eight.vercel.app/models/${params.id}`),
+        // loader: ({ params }) =>
+        //   fetch(`https://3d-model-server-eight.vercel.app/models/${params.id}`),
       },
       {
         path: "/my-models",

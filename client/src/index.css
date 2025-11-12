@@ -1,7 +1,7 @@
-@import "tailwindcss";
-@plugin "daisyui";
+/* @import "tailwindcss";
+@plugin "daisyui"; */
 
-/* @import url("https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&display=swap");
 
 @import "tailwindcss";
 @plugin "daisyui" {
@@ -28,5 +28,4 @@
   border: 1px solid #cac8c8ff;
   border-radius: 20px;
   background: rgb(243, 226, 226);
-} */
-
+}

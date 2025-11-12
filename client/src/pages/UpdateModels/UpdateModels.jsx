@@ -1,10 +1,31 @@
-import React from "react";
-import { useLoaderData, useLocation, useNavigate } from "react-router";
+import React, { use, useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router";
 import Swal from "sweetalert2";
+import { AuthContext } from "../../context/ContextProvider";
 
 const UpdateModels = () => {
-  const models = useLoaderData();
-  const model = models.data;
+  const { id } = useParams();
+  const [model, setModel] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const { user } = use(AuthContext);
+  useEffect(() => {
+    fetch(`https://3d-model-server-eight.vercel.app/models/${id}`, {
+      headers: {
+        authorization: `Bearer ${user.accessToken}`,
+      },
+    })
+      .then((res) => {
+        if (!res.ok) throw new Error("Failed to fetch model details");
+        return res.json();
+      })
+      .then((data) => {
+        setModel(data.data);
+        setLoading(false);
+      })
+      .catch((err) => {
+        setLoading(false);
+      });
+  }, [user, id]);
   // const location = useLocation();
 
   // const model = location?.state?.model;
@@ -94,7 +115,7 @@ const UpdateModels = () => {
               name="description"
               required
               rows="3"
-              className="textarea w-full rounded-2xl focus:border-0 focus:outline-gray-200 h-[250px]"
+              className="textarea w-full rounded-xl mt-1 focus:border-0 focus:outline-gray-200 h-[250px] resize-none"
               placeholder="Enter description"
             ></textarea>
           </div>
